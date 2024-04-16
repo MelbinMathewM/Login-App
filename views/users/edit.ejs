@@ -1,0 +1,113 @@
+<%- include("../layouts/header.ejs") %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 mt-5">
+      <img
+        src="/userImages/<%=user.photo%>"
+        alt="User Profile"
+        class="rounded-circle mx-auto d-block mt-3 mb-3"
+        width="100px"
+        height="100px"
+      />
+      <div id="error" class="text-warning fw-bold text-center"></div>
+      <form action="" method="post" enctype="multipart/form-data" id="form">
+        <div class="form-group mb-3">
+          <label for="image" class="form-label text-dark">Profile Picture</label>
+          <input type="file" class="form-control" id="photo" name="photo" />
+        </div>
+        <input type="hidden" name="user_id" value="<%=user._id%>" />
+        <div class="form-group mb-3">
+          <label for="name" class="form-label text-dark">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            value="<%=user.name%>"
+            placeholder="Enter Name"
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="email" class="form-label text-dark">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            value="<%=user.email%>"
+            placeholder="Enter Email"
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="mobile" class="form-label text-dark">Mobile</label>
+          <input
+            type="text"
+            class="form-control"
+            id="phone"
+            name="phone"
+            value="<%=user.phone%>"
+            placeholder="Enter Mobile Number"
+          />
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary mr-2">Update Profile</button>
+          <a href="/home" class="btn btn-secondary mr-2">Go Back to Home</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<%- include("../layouts/footer.ejs") %>
+
+<script>
+  setTimeout(() => {
+        const messageDiv = document.getElementById('message');
+        if (messageDiv) {
+            messageDiv.remove();
+        }
+    }, 5000);
+    setTimeout(() => {
+        const messageDiv = document.getElementById('error');
+        if (messageDiv) {
+            messageDiv.remove();
+        }
+    }, 5000);
+
+    let form = document.getElementById("form");
+    let error = document.getElementById("error");
+    let message = [];
+    let name_reg = /^[a-zA-Z ]+$/;
+    let mobile_reg = /^\d{10}$/;
+  
+    form.addEventListener("submit", (e) => {
+      message = [];
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let mobile = document.getElementById("phone").value.trim();
+  
+      if (!name_reg.test(name)) {
+        message.push("Invalid Name");
+      }
+  
+      email_validate(email);
+  
+      if (!mobile_reg.test(mobile)) {
+        message.push("Mobile Number should be 10 digit numbers");
+      }
+      if (message.length > 0) {
+        e.preventDefault();
+        error.innerText = message[0];
+      }
+    });
+  
+    function email_validate(email) {
+      let reg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      let result = reg.test(email);
+      if (!result) {
+        message.push("Invalid Email");
+      }
+    }
+</script>

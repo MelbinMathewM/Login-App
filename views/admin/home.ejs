@@ -1,0 +1,31 @@
+<%- include('../layouts/header') %>
+
+<div class=" admincon container-fluid-fluid">
+    <header class="header">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="ps-5 text-light mt-3">Admin&nbsp;Panel</h1>
+            </div>
+            <div class="col-md-6">
+                <a href="/admin/dashboard" class=" todash btn btn-primary">Dashboard</a>
+                <a href="/admin/logout"><button class="logouter btn btn-danger">Logout</button></a>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="ahimger">
+                    <img src="/userImages/<%= admin.photo %>" alt="Admin Image" class="img-fluid rounded-circle mb-3" style="width:350px;height:350px">
+                </div>
+            </div>
+            <div class="col-md-6 text-left">
+                <h1 class="fw-bold pb-3 pt-5">Name : <%= admin.name %></h1>
+                <h3 class="pb-2">Email : <%= admin.email %></h3>
+                <h3>Mobile : <%= admin.phone %></h3>
+            </div>
+        </div>
+    </main>
+</div>
+
+<%- include('../layouts/footer') %>

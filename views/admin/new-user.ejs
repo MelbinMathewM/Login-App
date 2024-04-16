@@ -1,0 +1,99 @@
+<%- include('../layouts/header') %>
+
+<div class="center-div mt-5 pt-3">
+    <div class="container">
+        <div class="row center-div">
+            <div class="col-md-6 md-3 border pb-3 adrow">
+                <h1 class="text-center mb-3 mt-4 text-light">Add new user</h1>
+                <div id="error" class="text-warning fw-bold text-center"></div>
+                <form action="" method="post" enctype="multipart/form-data" id="form">
+                    <div class="form-group">
+                        <label for="name" class="text-light">Name</label>
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="text-light">Email</label>
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Enter Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="text-light">Mobile</label>
+                        <input type="text" name="phone" class="form-control" id="phone" placeholder="Enter Number">
+                    </div>
+                    <div class="form-group">
+                        <label for="photo" class="text-light">Upload Image</label>
+                        <input type="file" name="photo" class="form-control" id="photo" placeholder="Upload Image">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="text-light">Password</label>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password">
+                    </div>
+                    <div class="text-center mt-3 mb-3">
+                        <button class="btn btn-success mr-2" type="submit">Add User</button>
+                        <a href="/admin/dashboard" class="btn btn-secondary">Go Back</a>
+                    </div>
+                </form>
+                <% if (typeof message !== "undefined") { %>
+                    <p class="text-danger"><%= message %></p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../layouts/footer') %>
+
+<script>
+    setTimeout(() => {
+        const messageDiv = document.getElementById('message');
+        if (messageDiv) {
+            messageDiv.remove();
+        }
+    }, 5000);
+    // setTimeout(() => {
+    //     const messageDiv = document.getElementById('error');
+    //     if (messageDiv) {
+    //         messageDiv.remove();
+    //     }
+    // }, 5000);
+    
+    let form = document.getElementById("form");
+    let error = document.getElementById("error");
+    let message = [];
+    let name_reg = /^[a-zA-Z ]+$/;
+    let mobile_reg = /^\d{10}$/;
+  
+    form.addEventListener("submit", (e) => {
+      message = [];
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let mobile = document.getElementById("phone").value.trim();
+      let password = document.getElementById("password").value.trim();
+  
+      if (!name_reg.test(name)) {
+        message.push("Invalid Name");
+      }
+  
+      email_validate(email);
+  
+      if (!mobile_reg.test(mobile)) {
+        message.push("Mobile Number should be 10 digit numbers");
+      }
+  
+      if (password.length < 6) {
+        message.push("Password should be at least 6 characters");
+      }
+  
+      if (message.length > 0) {
+        e.preventDefault();
+        error.innerText = message[0];
+      }
+    });
+  
+    function email_validate(email) {
+      let reg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      let result = reg.test(email);
+      if (!result) {
+        message.push("Invalid Email");
+      }
+    }
+</script>

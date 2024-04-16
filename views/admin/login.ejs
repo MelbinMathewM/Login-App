@@ -1,0 +1,69 @@
+<%- include('../layouts/header') %>
+
+<div class="text-center alogdiv center-div">
+    <div class="container alogcon text-center" style="width: 35%;">
+        <h2 class=" alogtit text-light">Admin Login</h2>
+        <% if(locals.message) { %>
+            <div class="alert text-warning text-center" id="message">
+                <%= message %>
+            </div>
+        <% } %>
+        <div id="error" class="text-warning fw-bold"></div>
+        <form id="form" action="/admin" method="post" class="pt-3">
+            <div class="mb-3">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
+            </div>
+            <div class="mb-3">
+                <input type="password" id="password" class="form-control" name="password" placeholder="Enter Password">
+            </div>
+            <button type="submit" class="btn btn-secondary rounded-pill">Submit</button>
+        </form>
+    </div>
+</div>
+
+<%- include('../layouts/footer') %>
+
+<script>
+    
+    setTimeout(() => {
+        const messageDiv = document.getElementById('message');
+        if (messageDiv) {
+            messageDiv.remove();
+        }
+    }, 5000);
+    // setTimeout(() => {
+    //     const messageDiv = document.getElementById('error');
+    //     if (messageDiv) {
+    //         messageDiv.remove();
+    //     }
+    // }, 5000);
+
+    let form = document.getElementById("form");
+    let error = document.getElementById("error");
+    let message = [];
+
+    form.addEventListener("submit", (e) => {
+      message = [];
+      let email = document.getElementById("email").value.trim();
+      let password = document.getElementById("password").value.trim();
+
+      email_validate(email);
+
+      if (password.length < 3) {
+        message.push("Password should be at least 6 characters");
+      }
+  
+      if (message.length > 0) {
+        e.preventDefault();
+        error.innerText = message[0];
+      }
+    });
+
+    function email_validate(email) {
+      let reg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      let result = reg.test(email);
+      if (!result) {
+        message.push("Invalid Email");
+      }
+    }
+</script>

@@ -1,0 +1,169 @@
+
+body{
+    background-image: url('./assets/Untitled\ design.png');
+    background-position:center center;
+    background-repeat:no-repeat;
+    margin: 0;
+    overflow-x: hidden;
+}
+.admincon{
+    height :120vh;
+    width: 100%;
+    background-image: url('./assets/background\ 45.jpg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: repeat;
+    padding-bottom: 10%;
+}
+.usercon{
+    height :120vh;
+    width: 100%;
+    background-image: url('./assets/background55.jpg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: repeat;
+    padding-bottom: 10%;
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    position:relative;
+    top:0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    background-color: black;
+    height : 80px;
+    margin-bottom: 20px;
+}
+#search{
+    width:50%;
+}
+.search-form,.todash{
+    position: absolute;
+    right:15%;
+    top:25%;
+
+}
+#search-toggle-btn{
+    position: absolute;
+    right:15%;
+    top:25%;
+}
+.add-user,.logouter{
+    position : absolute;
+    right: 7%;
+    top:25%;
+}
+.adrow{
+    margin-left: 30%;
+}
+.regcon{
+    margin-top: 2.5%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    border: 1px solid;
+    border-radius: 10%;
+    background-image: url('./assets/Background2.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.adrow{
+    background-image: url('./assets/background56.jpg');
+    border-radius: 5%;
+}
+.edrow{
+    background-image: url('./assets/background56.jpg');
+    border-radius: 5%;
+}
+.img{
+    border-radius: 10%;
+}
+
+.regform{
+    border-radius: 100%;
+}
+
+.ulogcon{
+    margin-top: 8%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    border: 1px solid;
+    border-radius: 10%;
+    background-image: url('./assets/Background2.jpg');
+    opacity: 0.95;
+    background-size: cover;
+    background-position: center;
+}
+.ulogtit{
+    padding-top: 5%;
+}
+.alogdiv{
+    padding-bottom: 10%;
+}
+
+.alogcon{
+    margin-top: 10%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    border: 1px solid;
+    border-radius: 15%;
+    background-image: url('./assets/Background2.jpg');
+    opacity: 0.95;
+    background-size:contain;
+    background-position: center;
+}
+
+#form{
+    margin-left: 12%;
+    margin-right :12%;
+}
+#login{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+/*Dashboard user-card*/
+.user-grid {
+    padding-top: 7%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.user-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    background-image: url('./assets/background33.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.user-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+.dashbb{
+    position: absolute;
+    border-radius: 30% 0% 30% 0%;
+    right:5%;
+    bottom:10%;
+    position: fixed;
+}
+.main{
+    padding-top: 10%;
+
+}
+.text-left{
+    padding-top: 3%;
+
+}
+.ahimger{
+    margin-left: 10%;
+}
